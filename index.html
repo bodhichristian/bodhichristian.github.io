@@ -1,10 +1,11 @@
 <html>
 <head>
-  <title>Christian Lavelle</title>
+  <title>Hello Display</title>
   <style>
     body {
       display: flex;
-      justify-content: center;
+      flex-direction: column;
+      justify-content: flex-start;
       align-items: center;
       height: 100vh;
       margin: 0;
@@ -31,9 +32,25 @@
         color: black; /* Black text color */
       }
     }
+
+    /* Scrolling behavior */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Styling for the next text object */
+    .next-text {
+      font-size: 36px;
+      margin-top: 50vh; /* Half of viewport height */
+    }
   </style>
 </head>
 <body>
   <div class="hello">Hello.</div>
+
+  <!-- Anchor for scrolling to stop -->
+  <a id="next-text-anchor"></a>
+
+  <div class="next-text">Welcome to the bodhi tree.</div>
 </body>
 </html>
