@@ -9,13 +9,27 @@
       height: 100vh;
       margin: 0;
       font-family: Arial, sans-serif;
-      background-color: #222222; /* Very dark gray background */
     }
 
     .hello {
       font-size: 48px;
       font-weight: bold;
-      color: white; /* White text color */
+    }
+
+    /* Dark Mode */
+    @media (prefers-color-scheme: dark) {
+      body {
+        background-color: #222222; /* Very dark gray background */
+        color: white; /* White text color */
+      }
+    }
+
+    /* Light Mode */
+    @media (prefers-color-scheme: light) {
+      body {
+        background-color: #F5F5F5; /* Very faint gray background */
+        color: black; /* Black text color */
+      }
     }
   </style>
 </head>
