@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 <head>
   <title>Hello Display</title>
@@ -9,40 +10,44 @@
       height: 100vh;
       margin: 0;
       font-family: Arial, sans-serif;
-      background-color: #F5F5F5; /* Very faint gray background */
-      color: black; /* Black text color */
     }
 
     .hello {
       font-size: 48px;
       font-weight: bold;
-      cursor: pointer;
-      position: relative;
+      cursor: pointer; /* Add a pointer cursor to indicate clickability */
     }
 
-    /* Delightful animation */
+    /* Dark Mode */
+    @media (prefers-color-scheme: dark) {
+      body {
+        background-color: #222222; /* Very dark gray background */
+        color: white; /* White text color */
+      }
+    }
+
+    /* Light Mode */
+    @media (prefers-color-scheme: light) {
+      body {
+        background-color: #F5F5F5; /* Very faint gray background */
+        color: black; /* Black text color */
+      }
+    }
+
+    /* Confetti animation */
     .hello.clicked {
-      animation: scatter 1s forwards;
+      animation: explode 1s;
     }
 
-    @keyframes scatter {
+    @keyframes explode {
       0% {
+        transform: scale(1);
         opacity: 1;
       }
       100% {
+        transform: scale(0);
         opacity: 0;
-        transform: translateY(calc(-100vh - 100px)) rotate(720deg);
       }
-    }
-
-    .particle {
-      position: absolute;
-      width: 8px;
-      height: 8px;
-      background-color: #FFC107; /* Yellow color */
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 1;
     }
   </style>
 </head>
@@ -53,30 +58,12 @@
     // JavaScript to add the click event listener
     const helloText = document.getElementById('helloText');
 
-    helloText.addEventListener('click', function(event) {
-      // Prevent the text selection on double click
-      event.preventDefault();
-
+    helloText.addEventListener('click', function() {
       helloText.classList.add('clicked');
       // Remove the 'clicked' class after the animation finishes (1s in this case)
       setTimeout(() => {
         helloText.classList.remove('clicked');
       }, 1000);
-
-      // Create colorful particles
-      const particleCount = 30;
-      for (let i = 0; i < particleCount; i++) {
-        const particle = document.createElement('div');
-        particle.classList.add('particle');
-        particle.style.left = event.clientX + 'px';
-        particle.style.top = event.clientY + 'px';
-        document.body.appendChild(particle);
-
-        // Remove the particles after the animation finishes (1s in this case)
-        setTimeout(() => {
-          particle.remove();
-        }, 1000);
-      }
     });
   </script>
 </body>
