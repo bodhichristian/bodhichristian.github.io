@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 <head>
   <title>Hello Display</title>
@@ -31,9 +32,38 @@
         color: black; /* Black text color */
       }
     }
+
+    /* Paint splatter animation */
+    .hello.clicked {
+      animation: splatter 1s;
+    }
+
+    @keyframes splatter {
+      0% {
+        transform: scale(0);
+        opacity: 1;
+      }
+      100% {
+        transform: scale(30);
+        opacity: 0;
+      }
+    }
   </style>
 </head>
 <body>
-  <div class="hello">Hello.</div>
+  <div class="hello" id="helloText">Hello.</div>
+
+  <script>
+    // JavaScript to add the click event listener
+    const helloText = document.getElementById('helloText');
+
+    helloText.addEventListener('click', function() {
+      helloText.classList.add('clicked');
+      // Remove the 'clicked' class after the animation finishes (1s in this case)
+      setTimeout(() => {
+        helloText.classList.remove('clicked');
+      }, 1000);
+    });
+  </script>
 </body>
 </html>
